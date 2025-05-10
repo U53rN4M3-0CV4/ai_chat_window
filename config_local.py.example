@@ -1,0 +1,8 @@
+"""
+本地配置文件示例
+請將此文件複製為 config_local.py 並填入您的API令牌
+注意：config_local.py 不應該被提交到版本控制系統中
+"""
+
+# 您的API令牌，格式應為 "cpk_xxxxxxxx..."
+LOCAL_API_TOKEN = "your_api_token_here"
