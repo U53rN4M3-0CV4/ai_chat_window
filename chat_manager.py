@@ -67,6 +67,14 @@ class ChatManager:
         self.is_sending = True
         self.task_cancelled = False
         
+        # 存儲UI元素引用，以便停止時使用
+        self.current_ui_elements = {
+            'user_input_entry': user_input_entry,
+            'send_btn': send_btn,
+            'clear_btn': clear_btn,
+            'stop_btn': stop_btn
+        }
+        
         # 禁用UI元素
         user_input_entry.config(state=tk.DISABLED)
         send_btn.config(state=tk.DISABLED)
@@ -108,7 +116,7 @@ class ChatManager:
             # 更新狀態欄
             if self.update_status:
                 model_name = model_id.split('/')[-1]
-                self.update_status(f"正在使用 {model_name} 處理請求，溫度: {temperature:.1f}")
+                self.update_status(f"正在使用 {model_name} 處理請求，溫度: {temperature:.2f}")
             
             # 發送消息
             success, full_response, status = await self.api_client.send_message(
@@ -161,6 +169,7 @@ class ChatManager:
             # 重置狀態
             self.is_sending = False
             self.current_task = None
+            self.current_ui_elements = None
     
     def send_message(self, user_input, chat_display, model_id, temperature,
                      user_input_entry, send_btn, clear_btn, stop_btn, model_name=""):
@@ -224,6 +233,29 @@ class ChatManager:
             except:
                 pass
         
+        # 立即恢復UI元素狀態（使用存儲的UI元素引用）
+        if hasattr(self, 'current_ui_elements') and self.current_ui_elements:
+            ui_elements = self.current_ui_elements
+            
+            if ui_elements.get('user_input_entry'):
+                ui_elements['user_input_entry'].config(state=tk.NORMAL)
+            if ui_elements.get('send_btn'):
+                ui_elements['send_btn'].config(state=tk.NORMAL)
+            if ui_elements.get('clear_btn'):
+                ui_elements['clear_btn'].config(state=tk.NORMAL)
+            if ui_elements.get('stop_btn'):
+                ui_elements['stop_btn'].config(state=tk.DISABLED)
+            
+            # 讓輸入框重新獲得焦點
+            if ui_elements.get('user_input_entry'):
+                ui_elements['user_input_entry'].focus_set()
+        
         # 更新狀態欄
         if self.update_status:
-            self.update_status("回應已取消") 
+            self.update_status("回應已取消")
+        
+        # 重置發送狀態
+        self.is_sending = False
+        
+        # 清理UI元素引用
+        self.current_ui_elements = None 

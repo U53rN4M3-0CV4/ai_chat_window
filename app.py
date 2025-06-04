@@ -390,7 +390,7 @@ def create_gui():
     
     # 創建一個StringVar來顯示溫度值
     temp_text = tk.StringVar()
-    temp_text.set(f"{temperature_value.get():.1f}")
+    temp_text.set(f"{temperature_value.get():.2f}")
     
     temp_value_label = tk.Label(
         temp_frame,
@@ -404,17 +404,28 @@ def create_gui():
     # 更新溫度顯示的函數
     def update_temp_display(val):
         temp = float(val)
-        temp_text.set(f"{temp:.1f}")
+        # 四捨五入到小數點後2位
+        temp = round(temp, 2)
+        # 更新變數值以確保一致性
+        temperature_value.set(temp)
+        temp_text.set(f"{temp:.2f}")
+        # 狀態更新
+        if 'update_status' in globals() and update_status:
+            update_status(f"溫度已調整為: {temp:.2f}")
     
     # 溫度滑塊
-    temp_slider = ttk.Scale(
+    temp_slider = tk.Scale(
         temp_frame,
         from_=0.0,
         to=1.0,
         orient=tk.HORIZONTAL,
         length=100,
         variable=temperature_value,
-        command=update_temp_display
+        command=update_temp_display,
+        resolution=0.01,  # 設置精度為0.01，即小數點後2位
+        bg=bg_color,
+        highlightthickness=0,
+        showvalue=0  # 不顯示滑塊自帶的數值，我們用自己的標籤
     )
     temp_slider.pack(side=tk.LEFT)
     
@@ -458,7 +469,7 @@ def create_gui():
     
     temp_desc = tk.Label(
         temp_desc_frame,
-        text="溫度說明: 較低 = 更精確/一致的回應，較高 = 更有創意/多樣的回應",
+        text="溫度說明: 較低 = 更精確/一致的回應，較高 = 更有創意/多樣的回應 | 試試用同一問題在0.1和0.9下測試",
         fg="#555555",
         bg=bg_color,
         font=(DEFAULT_FONT_FAMILY, DEFAULT_FONT_SIZES["description"]),
