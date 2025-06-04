@@ -4,7 +4,7 @@ import warnings
 import base64
 
 # 應用程式版本
-APP_VERSION = "1.0"
+APP_VERSION = "1.2"
 
 # 默認字體大小設置
 DEFAULT_FONT_SIZES = {

@@ -49,6 +49,9 @@ class ApiClient:
         self.is_cancelled = False
         full_response = ""
         
+        # 四捨五入到小數點後2位，確保精度一致
+        temperature = round(temperature, 2)
+        
         # 獲取並驗證API令牌
         api_token = get_api_token()
         if not validate_api_token(api_token):
