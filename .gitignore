@@ -8,7 +8,7 @@ __pycache__/
 .pytest_cache/
 
 # 虛擬環境
-venv/
+.venv/
 env/
 ENV/
 
