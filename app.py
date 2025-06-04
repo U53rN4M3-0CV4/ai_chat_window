@@ -296,7 +296,7 @@ def create_gui():
     temperature_value = tk.DoubleVar(root)
     temperature_value.set(0.5)  # 默認溫度值
     font_scale_value = tk.DoubleVar(root)  # 字體縮放比例變量
-    font_scale_value.set(1.0)  # 默認比例為1.0
+    font_scale_value.set(0.8)  # 默認比例為0.8（小型）
     
     # 創建聊天管理器
     chat_manager = ChatManager(update_status_callback=update_status)
@@ -529,8 +529,8 @@ def create_gui():
     custom_size_label = tk.Label(custom_size_frame, text="倍", bg=bg_color, font=(DEFAULT_FONT_FAMILY, DEFAULT_FONT_SIZES["main"]))
     custom_size_label.pack(side=tk.LEFT, padx=(2, 0))
     
-    # 選擇默認字體大小為"中型"
-    font_scale_value.set(1.0)
+    # 選擇默認字體大小為"小型"
+    font_scale_value.set(0.8)
     # 初始設置輸入框為禁用狀態
     custom_size_entry.config(state="disabled")
     
@@ -751,7 +751,7 @@ def create_gui():
     user_input_entry.focus_set()
     
     # 確保字體大小設置正確應用
-    font_scale_value.set(1.0)
+    font_scale_value.set(0.8)
     custom_size_entry.config(state="disabled")
     update_font_size()
     

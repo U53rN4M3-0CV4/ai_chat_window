@@ -35,6 +35,7 @@ READONLY_BUT_SELECTABLE = "readonly_selectable"
 MODELS = {
     "DeepSeek V3-0324": "deepseek-ai/DeepSeek-V3-0324",
     "DeepSeek R1": "deepseek-ai/DeepSeek-R1",
+    "DeepSeek R1-0528": "deepseek-ai/DeepSeek-R1-0528",
     "DeepSeek Prover V2": "deepseek-ai/DeepSeek-Prover-V2-671B",
     "DeepSeek R1T Chimera": "tngtech/DeepSeek-R1T-Chimera",
     "Qwen3 235B": "Qwen/Qwen3-235B-A22B",
