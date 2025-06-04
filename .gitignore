@@ -11,6 +11,7 @@ __pycache__/
 .venv/
 env/
 ENV/
+build/
 
 # IDE配置文件
 .idea/
