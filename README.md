@@ -35,7 +35,7 @@
     ```
 
 2.  **設定 API 權杖 (API Token)**:
-    **本應用程式使用 [chutes.ai](https://chutes.ai/) 提供的 AI 服務 API**，您需要：
+    **本應用程式使用 [openrouter.ai](https://openrouter.ai/) 提供的 AI 服務 API**，您需要：
 
     *   **方式一：使用環境變數 (建議)**
         設定一個名為 `LLM_API_TOKEN` 的環境變數，其值為您的 API 權杖。

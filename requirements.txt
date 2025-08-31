@@ -1,0 +1,9 @@
+# AI 聊天助手依賴項
+# 
+# 主要依賴項:
+# - aiohttp: 用於異步 HTTP 請求處理 API 通信
+#
+# 注意: tkinter 是 Python 標準庫的一部分，通常隨 Python 安裝一起提供
+# 如果在某些 Linux 發行版中遇到 tkinter 缺失問題，請安裝 python3-tk 套件
+
+aiohttp>=3.8.0

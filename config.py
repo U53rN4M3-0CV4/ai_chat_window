@@ -33,18 +33,18 @@ READONLY_BUT_SELECTABLE = "readonly_selectable"
 
 # 支持的模型列表
 MODELS = {
-    "DeepSeek V3-0324": "deepseek-ai/DeepSeek-V3-0324",
-    "DeepSeek R1": "deepseek-ai/DeepSeek-R1",
-    "DeepSeek R1-0528": "deepseek-ai/DeepSeek-R1-0528",
-    "DeepSeek Prover V2": "deepseek-ai/DeepSeek-Prover-V2-671B",
-    "DeepSeek R1T Chimera": "tngtech/DeepSeek-R1T-Chimera",
-    "Qwen3 235B": "Qwen/Qwen3-235B-A22B",
-    "Llama-4 Maverick": "chutesai/Llama-4-Maverick-17B-128E-Instruct-FP8"
+    "DeepSeek V3-0324": "deepseek/deepseek-chat-v3-0324:free",
+    "DeepSeek V3.1": "deepseek/deepseek-chat-v3.1:free",
+    "DeepSeek R1-0528": "deepseek/deepseek-r1-0528:free",
+    "Qwen3 235B A22B": "qwen/qwen3-235b-a22b:free",
+    "Qwen3 Coder 480B A35B": "qwen/qwen3-coder:free",
+    "Kimi K2": "moonshotai/kimi-k2:free",
+    "OpenAI: gpt-oss-120b": "openai/gpt-oss-120b:free"
 }
 
 # API配置
 API_CONFIG = {
-    "api_url": "https://llm.chutes.ai/v1/chat/completions",
+    "api_url": "https://openrouter.ai/api/v1/chat/completions",
     # API令牌將從環境變數或設定檔讀取
     "api_token_env_var": "LLM_API_TOKEN",
 }
@@ -89,4 +89,4 @@ def get_api_token():
 
 # 驗證API令牌
 def validate_api_token(token):
-    return token and len(token) > 20 and token.startswith("cpk_") 
+    return token and len(token) > 20 and token.startswith("sk-") 
